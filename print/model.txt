@@ -1,0 +1,381 @@
+BaseModel(
+  (backbone): ResNet(
+    (conv): ConvBNLayer(
+      (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+      (_conv): Conv2D(3, 64, kernel_size=[7, 7], stride=[2, 2], padding=3, data_format=NCHW)
+      (_batch_norm): BatchNorm()
+    )
+    (pool2d_max): MaxPool2D(kernel_size=3, stride=2, padding=1)
+    (res2a): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res2b): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 64, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res2c): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 64, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res3a): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(128, 27, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 512, kernel_size=[1, 1], stride=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res3b): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(128, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res3c): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(128, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res3d): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(128, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res4a): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(256, 27, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 1024, kernel_size=[1, 1], stride=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res4b): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(256, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res4c): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(256, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res4d): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(256, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res4e): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(256, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res4f): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(256, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res5a): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(512, 27, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 2048, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 2048, kernel_size=[1, 1], stride=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res5b): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(2048, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(512, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 2048, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+    (res5c): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(2048, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): DeformableConvV2(
+          (conv_dcn): DeformConv2D()
+          (conv_offset): Conv2D(512, 27, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        )
+        (_batch_norm): BatchNorm()
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 2048, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm()
+      )
+    )
+  )
+  (neck): DBFPN(
+    (in2_conv): Conv2D(256, 256, kernel_size=[1, 1], data_format=NCHW)
+    (in3_conv): Conv2D(512, 256, kernel_size=[1, 1], data_format=NCHW)
+    (in4_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+    (in5_conv): Conv2D(2048, 256, kernel_size=[1, 1], data_format=NCHW)
+    (p5_conv): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (p4_conv): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (p3_conv): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (p2_conv): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+    (asf): ASFBlock(
+      (conv): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      (spatial_scale): Sequential(
+        (0): Conv2D(1, 1, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (1): ReLU()
+        (2): Conv2D(1, 1, kernel_size=[1, 1], data_format=NCHW)
+        (3): Sigmoid()
+      )
+      (channel_scale): Sequential(
+        (0): Conv2D(64, 4, kernel_size=[1, 1], data_format=NCHW)
+        (1): Sigmoid()
+      )
+    )
+  )
+  (head): DBHead(
+    (binarize): Head(
+      (conv1): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      (conv_bn1): BatchNorm()
+      (conv2): Conv2DTranspose(64, 64, kernel_size=[2, 2], stride=[2, 2], data_format=NCHW)
+      (conv_bn2): BatchNorm()
+      (conv3): Conv2DTranspose(64, 1, kernel_size=[2, 2], stride=[2, 2], data_format=NCHW)
+    )
+    (thresh): Head(
+      (conv1): Conv2D(256, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      (conv_bn1): BatchNorm()
+      (conv2): Conv2DTranspose(64, 64, kernel_size=[2, 2], stride=[2, 2], data_format=NCHW)
+      (conv_bn2): BatchNorm()
+      (conv3): Conv2DTranspose(64, 1, kernel_size=[2, 2], stride=[2, 2], data_format=NCHW)
+    )
+  )
+)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

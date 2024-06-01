@@ -2,8 +2,6 @@ import cv2
 from paddleocr import PaddleOCR, draw_ocr
 from PIL import Image
 import time
-import logging
-# logging.getLogger('ppocr').setLevel(logging.ERROR)
 
 def detect(img):
     image = cv2.imread(f'in/{img}')
