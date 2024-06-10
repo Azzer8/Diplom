@@ -196,40 +196,6 @@ def train(
     amp_custom_white_list=[],
     amp_dtype="float16",
 ):
-    import matplotlib.pyplot as plt
-    with open('C:\\Users\\Azzer\\VScodeProjects\\Diplom\\print\\config.txt', 'w+') as f:
-        print(config, file=f)
-        print("-"*180, file=f)
-    with open('C:\\Users\\Azzer\\VScodeProjects\\Diplom\\print\\train_dataloader.txt', 'w+') as f:
-        for iter in train_dataloader:
-            for tensor in iter:
-                print(tensor, file=f)
-                # for i1 in range(len(tensor)):
-                #     if len(tensor[i1]) < 4:
-                #         for i2 in range(len(tensor[i1])):
-                #             print(i1, i2)
-                #             plt.imshow(tensor[i1][i2])
-                #             plt.show()
-                #     else:
-                #         print(i1)
-                #         plt.imshow(tensor[i1])
-                #         plt.show()
-            print("-"*180, file=f)
-    with open('C:\\Users\\Azzer\\VScodeProjects\\Diplom\\print\\valid_dataloader.txt', 'w+') as f:
-        for iter in valid_dataloader:
-            for tensor in iter:
-                print(tensor, file=f)
-            print("-"*180, file=f)
-            # for i in range(len(iter[0][0])):
-            #     plt.imshow(iter[0][0][i])
-            #     plt.show()
-
-    with open('C:\\Users\\Azzer\\VScodeProjects\\Diplom\\print\\post_process_class.txt', 'w+') as f:
-        print(vars(post_process_class), file=f)
-        print("-"*180, file=f)
-    with open('C:\\Users\\Azzer\\VScodeProjects\\Diplom\\print\\model.txt', 'w+') as f:
-        print(model, file=f)
-        print("-"*180, file=f)
     cal_metric_during_train = config["Global"].get("cal_metric_during_train", False)
     calc_epoch_interval = config["Global"].get("calc_epoch_interval", 1)
     log_smooth_window = config["Global"]["log_smooth_window"]
@@ -342,13 +308,6 @@ def train(
                 break
             lr = optimizer.get_lr()
             images = batch[0]
-            with open('C:\\Users\\Azzer\\VScodeProjects\\Diplom\\print\\program[train][images].txt', 'w+') as f:
-                for tensor in images:
-                    print(tensor, file=f)
-                    print("-"*180, file=f)
-                    # for i1 in range(len(tensor)):
-                    #     plt.imshow(tensor[i1])
-                    #     plt.show()
             if use_srn:
                 model_average = True
             # use amp
