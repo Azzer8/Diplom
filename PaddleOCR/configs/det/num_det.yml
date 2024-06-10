@@ -77,7 +77,7 @@ Train:
     - DetLabelEncode:
     - EastRandomCropData:
         size: [960, 960]
-        max_tries: 10
+        max_tries: 50
         min_crop_side_ratio: 0.1
     - MakeBorderMap:
         shrink_ratio: 0.4
