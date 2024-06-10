@@ -1,14 +1,14 @@
 Global:
   debug: false
   use_gpu: false
-  epoch_num: 50
-  log_smooth_window: 22
-  print_batch_step: 11
-  save_model_dir: ./output/num_PP-OCRv4/best_accuracy
-  save_epoch_step: 10
+  epoch_num: 10
+  log_smooth_window: 164
+  print_batch_step: 82
+  save_model_dir: ./output/num_PP-OCRv4
+  save_epoch_step: 3
   eval_batch_step:
   - 0
-  - 22
+  - 164
   cal_metric_during_train: false
   checkpoints:
   pretrained_model:
@@ -79,7 +79,6 @@ Train:
         size: [960, 960]
         max_tries: 10
         min_crop_side_ratio: 0.1
-        
     - MakeBorderMap:
         shrink_ratio: 0.4
         thresh_min: 0.3
@@ -109,7 +108,7 @@ Train:
   loader:
     shuffle: true
     drop_last: false
-    batch_size_per_card: 4
+    batch_size_per_card: 8
     num_workers: 8
 
 Eval:
