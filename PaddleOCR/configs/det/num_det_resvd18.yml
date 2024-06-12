@@ -1,14 +1,14 @@
 Global:
   debug: false
   use_gpu: false
-  epoch_num: 10
-  log_smooth_window: 164
-  print_batch_step: 82
+  epoch_num: 20
+  log_smooth_window: 31
+  print_batch_step: 31
   save_model_dir: ./output/num_PP-OCRv4
-  save_epoch_step: 3
+  save_epoch_step: 100
   eval_batch_step:
   - 0
-  - 164
+  - 651
   cal_metric_during_train: false
   checkpoints:
   pretrained_model:
@@ -18,16 +18,15 @@ Global:
 
 Architecture:
   model_type: det
-  algorithm: DB++
+  algorithm: DB
   Transform:
   Backbone:
-    name: ResNet
-    layers: 50
-    dcn_stage: [False, True, True, True]
+    name: ResNet_vd
+    layers: 18
+    disable_se: True
   Neck:
     name: DBFPN
     out_channels: 256
-    use_asf: True
   Head:
     name: DBHead
     k: 50
@@ -46,11 +45,11 @@ Optimizer:
   beta2: 0.999
   lr:
     name: Cosine
-    learning_rate: 0.0005
-    warmup_epoch: 2
+    learning_rate: 0.00005
+    warmup_epoch: 0
   regularizer:
     name: L2
-    factor: 5.0e-05
+    factor: 0
 
 PostProcess:
   name: DBPostProcess
@@ -108,8 +107,8 @@ Train:
   loader:
     shuffle: true
     drop_last: false
-    batch_size_per_card: 8
-    num_workers: 8
+    batch_size_per_card: 4
+    num_workers: 0
 
 Eval:
   dataset:
