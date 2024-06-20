@@ -12,7 +12,7 @@ Global:
   cal_metric_during_train: false
   checkpoints:
   pretrained_model:
-  save_inference_dir: ./output/num_PP-OCRv4/inference
+  save_inference_dir: ./output/num_PP-OCRv4_infer/
   infer_img:
   save_res_path: ./checkpoints/det_db/predicts_db.txt
 
@@ -108,7 +108,7 @@ Train:
     shuffle: true
     drop_last: false
     batch_size_per_card: 4
-    num_workers: 0
+    num_workers: 8
 
 Eval:
   dataset:

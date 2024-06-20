@@ -1,20 +1,20 @@
 Global:
   debug: false
   use_gpu: false
-  epoch_num: 10
-  log_smooth_window: 164
-  print_batch_step: 82
+  epoch_num: 21
+  log_smooth_window: 318
+  print_batch_step: 159
   save_model_dir: ./output/num_PP-OCRv4
-  save_epoch_step: 3
+  save_epoch_step: 100
   eval_batch_step:
   - 0
-  - 164
+  - 477
   cal_metric_during_train: false
   checkpoints:
   pretrained_model:
   save_inference_dir: ./output/num_PP-OCRv4/inference
   infer_img:
-  save_res_path: ./checkpoints/det_db/predicts_db.txt
+  save_res_path:
 
 Architecture:
   model_type: det
@@ -50,7 +50,7 @@ Optimizer:
     warmup_epoch: 2
   regularizer:
     name: L2
-    factor: 5.0e-05
+    factor: 0
 
 PostProcess:
   name: DBPostProcess
@@ -72,7 +72,7 @@ Train:
     ratio_list: [1.0]
     transforms:
     - DecodeImage:
-        img_mode: RGB
+        img_mode: BGR
         channel_first: false
     - DetLabelEncode:
     - EastRandomCropData:
@@ -119,7 +119,7 @@ Eval:
       - ./train_data/det/val.txt
     transforms:
     - DecodeImage:
-        img_mode: RGB
+        img_mode: BGR
         channel_first: false
     - DetLabelEncode:
     - DetResizeForTest:
