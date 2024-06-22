@@ -1,20 +1,20 @@
 Global:
   debug: false
   use_gpu: false
-  epoch_num: 20
-  log_smooth_window: 31
-  print_batch_step: 31
+  epoch_num: 21
+  log_smooth_window: 414
+  print_batch_step: 212
   save_model_dir: ./output/num_PP-OCRv4
   save_epoch_step: 100
   eval_batch_step:
   - 0
-  - 651
+  - 636
   cal_metric_during_train: false
-  checkpoints:
+  checkpoints: 
   pretrained_model:
   save_inference_dir: ./output/num_PP-OCRv4_infer/
   infer_img:
-  save_res_path: ./checkpoints/det_db/predicts_db.txt
+  save_res_path:
 
 Architecture:
   model_type: det
@@ -45,8 +45,8 @@ Optimizer:
   beta2: 0.999
   lr:
     name: Cosine
-    learning_rate: 0.00005
-    warmup_epoch: 0
+    learning_rate: 0.0001
+    warmup_epoch: 2
   regularizer:
     name: L2
     factor: 0
@@ -79,12 +79,12 @@ Train:
         max_tries: 50
         min_crop_side_ratio: 0.1
     - MakeBorderMap:
-        shrink_ratio: 0.4
+        shrink_ratio: 0.3
         thresh_min: 0.3
         thresh_max: 0.7
     - MakeShrinkMap:
-        shrink_ratio: 0.4
-        min_text_size: 8
+        shrink_ratio: 0.3
+        min_text_size: 1
     - NormalizeImage:
         scale: 1./255.
         mean:
@@ -107,7 +107,7 @@ Train:
   loader:
     shuffle: true
     drop_last: false
-    batch_size_per_card: 4
+    batch_size_per_card: 6
     num_workers: 8
 
 Eval:
